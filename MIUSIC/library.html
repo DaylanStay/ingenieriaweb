@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIUSIC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">MIUSIC</div>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="search.html"><i class="fas fa-search"></i> Buscar</a></li>
+                <li><a href="library.html" class="active"><i class="fas fa-book"></i> Tu Biblioteca</a></li>
+                <li><a href="create-playlist.html" class=""><i class="fas fa-plus-square"></i> Crear Playlist</a></li>
+            </ul>
+            <div class="user">
+                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-avatar">
+                <span class="user-name"><a href="auth.html">Iniciar Sesión</a></span>
+            </div>
+        </nav>
+        <main>
+            <header>
+                <h1>Tu Biblioteca</h1>
+            </header>
+            <div class="library-content">
+                <div class="library-main">
+                    <section id="favorites">
+                        <h2>Tus Favoritos</h2>
+                        <div class="favorite-grid">
+                            <!-- Añadido dinámicamente -->
+                        </div>
+                    </section>
+                    <section id="playlists">
+                        <h2>Tus Playlists</h2>
+                        <div class="playlist-grid">
+                            <!-- Añadido dinámicamente -->
+                        </div>
+                    </section>
+                    <section id="albums">
+                        <h2>Tus Álbumes</h2>
+                        <div class="album-grid">
+                            <!-- Añadido dinámicamente -->
+                        </div>
+                    </section>
+                    <section id="artists">
+                        <h2>Tus Artistas</h2>
+                        <div class="artist-grid">
+                            <!-- Añadido dinámicamente -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <div class="song-details-sidebar" id="song-details-sidebar">
+            <!-- Detalles de la canción se mostrarán aquí -->
+        </div>
+    </div>
+    <footer>
+        <div class="now-playing">
+            <div class="song-info">
+                <img src="https://via.placeholder.com/60" alt="Portada del álbum" class="album-cover">
+                <div class="song-details">
+                    <h3 class="song-title">Título de la canción</h3>
+                    <p class="artist">Artista</p>
+                </div>
+            </div>
+            <div class="player-controls">
+                <div class="controls">
+                    <button id="prev"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-pause"><i class="fas fa-play"></i></button>
+                    <button id="next"><i class="fas fa-step-forward"></i></button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span class="current-time">0:00</span>
+                        <span class="total-time">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="volume-control">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" min="0" max="100" value="50" class="volume-slider">
+            </div>
+        </div>
+    </footer>
+    <script src="/scripts/script.js"></script>
+</body>
+</html>
