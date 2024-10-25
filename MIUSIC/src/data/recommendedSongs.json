@@ -1,0 +1,50 @@
+[
+    {
+      "id": "s1",
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "coverUrl": "https://i.discogs.com/vaH1Pv5RPfD1dxuaEscxMEV0CECv0yorec3CaNPzp4s/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNjg3/Mjg5LTE1NDAwNTk2/NTUtNTA0NS5qcGVn.jpeg",
+      "audioUrl": "/src/data/songs/bohemian.mp3",
+      "type": "song",
+      "album": "A Night at the Opera",
+      "year": "1975",
+      "genre": "Rock",
+      "duration": "5:55"
+    },
+    {
+      "id": "s2",
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "coverUrl": "https://i.discogs.com/niJCZULbS5JKel-Z1-FdNY4KHWirgn3IfVBNFncWp74/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM4Mjg3/Ny0xNjc0Mjk0MjE5/LTQ5MjAuanBlZw.jpeg",
+      "audioUrl": "/src/data/songs/imagine.mp3",
+      "type": "song",
+      "album": "Imagine",
+      "year": "1971",
+      "genre": "Rock",
+      "duration": "3:03"
+    },
+    {
+      "id": "s3",
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "coverUrl": "https://i.discogs.com/KRPG8mda9mjOMCY2dFCSJa2cNcE1YnO5cNjYViUB0kQ/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIxNjk1/Ni0xMjMxNTg3OTY1/LmpwZWc.jpeg",
+      "audioUrl": "/src/data/songs/billie.mp3",
+      "type": "song",
+      "album": "Thriller",
+      "year": "1982",
+      "genre": "Pop",
+      "duration": "4:54"
+    },
+    {
+      "id": "s4",
+      "title": "Like a Rolling Stone",
+      "artist": "Bob Dylan",
+      "coverUrl": "https://i.discogs.com/caBTWcGAv5w53v_9JJXYn7KPSotPIivjmJ8TEAjxKA4/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMjY0/MDktMTUzOTAwMzU5/NS0zMzg3LmpwZWc.jpeg",
+      "audioUrl": "/src/data/songs/rollin.mp3",
+      "type": "song",
+      "album": "Highway 61 Revisited",
+      "year": "1965",
+      "genre": "Folk Rock",
+      "duration": "6:13"
+    }
+  ]

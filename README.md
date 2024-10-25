@@ -1,42 +1,45 @@
-## MIUSIC
-## Descripción
+# A tener en cuenta
+- El reproductor de música solo funciona por el momento con las 4 canciones a modo ejemplo de recomendados (Luego se implementarán para todas las demás colecciones pero se añadió la funcionalidad ahora para que se logre visualizar y probar que funciona correctamente).
 
-Miusic es una aplicación móvil diseñada para que los amantes de la música puedan explorar, descubrir y gestionar su contenido favorito de manera intuitiva. Ofrece una experiencia personalizada donde los usuarios pueden buscar canciones, artistas, álbumes, playlists, podcasts y géneros con facilidad. Además, Miusic cuenta con una biblioteca personal, donde se pueden crear y organizar playlists, marcar canciones, artistas y álbumes como favoritos, y gestionar tu música añadiendo o eliminando tus canciones preferidas. Con Miusic, siempre tendrás tu música al alcance, lista para acompañarte donde vayas.
+- Nos centraremos en la vista móvil
 
-## Tabla de Contenidos
+# Entregables
+- EP 2.1 :  Implementación de 7 mockups UI en el framework Ionic. Adicional los dos formularios de inicio de sesión y registro.
+  
+- EP 2.2: Hacer lectura de datos desde un archivo JSON (puede ser local, o alguna fuente externa de datos), y mostrarlos en alguna de las pantallas.
+  
+- EP2.3 Definir ell modelo de la base de datos. Algunos motores de bases de datos que se pueden utilizar son: MySQL, PostgreSQL, SQLite, MongoDB, Firebase, entre otros. Se deben incluir al menos 3 tablas o documentos. __Justificar la selección del tipo de base de datos__.
+  
+- EP2.4 Hacer uso de al menos dos (2) __patrones de diseño__, ya sea web o móvil, en la implementación de las pantallas, teniendo como foco principal el uso desde un dispositivo móvil.
 
-1. [Análisis de las Funcionalidades](#análisisdelasfuncionalidades)
-2. [Prototipado Figma](#prototipadofigma)
-3. [Maquetación Responsiva](#aaquetaciónresponsiva)
-4. [Formularios y Validación](#formulariosyvalidación)
-5. [Tecnologías](#tecnologías)
+# Caso de Estudio
+Nuestro proyecto se centra principalmente en una aplicación móvil para reproducir música, lograr visualizar canciones recomendadas, armar playlists personales y poder buscar entre una serie de colecciones de música entre distintas categorias. 
 
+Las interfaces (UI) que he implementado de acuerdo al diseño de las __UI Figma__ presentadas son: 
 
-## Análisis de las Funcionalidades
+1. __Buscar contenido__ (Funcionalidad no implementada aún)
+2. __Visualización de destacados y recomendaciones__ (Parcialmente implementado, pero no es lo definitivo y es a modo de prueba y muestra)
+3. __Explorar la biblioteca__ (Parcialmente implementado, faltan mejoras y también no es definitivo, simplemente a modo de prueba y muestra)
+4. __Controles de reproducción__ (Parcialmente implementado, falta aplicarlo en todas las colecciones, pero se hizo a modo de prueba y muestra con solamente recomendados)
+5. __Visualización de detalles de las canciones__ (Parcialmente implementado, falta también aplicarlo a todas las colecciones y se hizo a modo de prueba y muestra solo con recomendados en la página de inicio)
+6. __Crear Playlist__ (Funcionalidad no implementada aún)
+7. __Agregar o eliminar canción de favoritos__ (Parcialmente implementada, faltan posibles mejoras)
 
--  Buscar contenido: En la página principal o apartado de búsqueda, hay una barra de búsqueda donde el usuario buscar canciones, artistas, albumes, podcasts, playlists o géneros.
+Adicional 
+8. Inicio de sesión (Parcialmente implementado, falta la verificación correcta pero aún no se tiene implementada la base de datos para ello)
+9. Registro (Parcialmente implementado, falta el guardado de datos en base de datos)
 
--  Visualización de destacados y recomendaciones: El usuario poseerá una sección de "Destacados" y "Recomendados para ti" que muestran contenido dinámico agregado en la página de inicio.
+# Propuesta 
+Nuestra propuesta es una aplicación web/móvil responsiva. 
 
--  Explorar la biblioteca: En la página de "Tu Biblioteca", el usuario podrá ver sus canciones favoritas, playlists, álbumes y artistas organizados en diferentes secciones​.
+La base de datos que he seleccionado es relacional, el motor de la base de datos a usar es PostgreSQL 
 
--  Controles de reproducción: En el pie de página, el usuario tiene controles de reproducción (reproducir/pausar, siguiente, anterior) y visualización del tiempo de la canción actual​.
+[Modelo de la BD](EP2/DB.png)
 
--  Visualización de detalles de las canciones: Si el usuario toca una canción esto muestra a través de una ventana los detalles de la canción seleccionada, incluyendo portada, título, artista y un botón para agregarla a favoritos​. (Temporalmente impleentada solo en el apartado de "Tu Biblioteca"
+# Justificación
 
--  Crear Playlists: Permite a los usuarios personalizar su experiencia musical organizando canciones en colecciones específicas según sus gustos o necesidades en el apartado de "Crear Playlist"
+Se decidió por usar PostgreSQL porque ofrece una gran capacidad de flexibilidad y rendimiento siendo capaz de manejar una gran variedad de relaciones complejas, como lo es la relación de usuarios con playlists, donde cada usuario puede disponer de varias playlists, que a su vez cada playlists cuenta con una cierta diversidad de canciones, además es importante mencionar que estas relaciones las maneja a través de las claves foráneas, permitiendo así diseñar una base de datos relacional bien estructurada. 
 
--  Agregar o eliminar canción a favoritos: Permite a los usuarios agregar o eliminar una canción a su lista de favoritos. (Temporalmente implementado solo en el apartado "Tu Biblioteca".
+Como añadidura cabe mencionar que tiene soporte para JSON lo cual es útil para almacenar información con datos menos estrictos, como las preferencias personalizadas del usuario o información de sesión, sin perder la integridad relacional.
 
-## Prototipado en Figma
-
-[Prototipo Wireframe](https://www.figma.com/proto/jDO7rp3E5RIPbxqahRpZQ6/proyecto?node-id=30-533&node-type=CANVAS&t=6lQLVYmlTsH0fhgM-1&scaling=min-zoom&content-scaling=fixed&page-id=19%3A201&starting-point-node-id=30%3A533)
-
-## Maquetación Responsiva
-La aplicación será desarrollada con HTML5, CSS3 y JavaScript, preocupandose de lo responsivo a través de CSS.
-(A futuro se piensa implementar React y Node.js)
-
-## Tecnologías
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+Otro punto importante es que PostgreSQL es muy eficiente para manejar grandes volúmenes de datos y tiene un buen rendimiento en consultas complejas ofreciendo escalabilidad y rendimiento.

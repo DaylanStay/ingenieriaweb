@@ -1,0 +1,475 @@
+/* Paleta de colores */
+:root {
+  --ion-color-primary: #ff8c00;
+  --ion-color-primary-rgb: 255,140,0;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0,0,0;
+  --ion-color-primary-shade: #e07b00;
+  --ion-color-primary-tint: #ff981a;
+
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18,18,18;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-border-color: #222222;
+  --ion-color-light: #ffffff;
+}
+
+/* Estilos generales */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ion-text-color);
+}
+
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+ion-toolbar {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+ion-button {
+  --color: var(--ion-color-light);
+}
+
+ion-button.selected {
+  --color: var(--ion-color-primary);
+}
+
+ion-button[color="primary"] {
+  --color: var(--ion-color-primary);
+}
+
+ion-card {
+  --background: #1e1e1e;
+  --color: var(--ion-text-color);
+}
+
+ion-card-title, ion-card-subtitle, ion-label, ion-item {
+  --color: var(--ion-text-color);
+}
+
+/* Estilos para el reproductor de música */
+.music-player {
+  background-color: #282828;
+  padding: 10px;
+  position: fixed;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.music-player-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.album-cover {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.song-details {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.song-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ion-text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-name {
+  font-size: 12px;
+  color: var(--ion-text-color);
+  margin: 4px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.play-pause-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-size: 1.5em;
+}
+
+.progress-volume {
+  width: 100%;
+}
+
+.progress-bar-container {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  --bar-height: 4px;
+  --knob-size: 12px;
+  --bar-background: #535353;
+  --bar-background-active: var(--ion-color-primary);
+  --knob-background: var(--ion-color-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ion-text-color);
+  margin-top: 4px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.volume-control ion-icon {
+  margin-right: 8px;
+  color: var(--ion-text-color);
+}
+
+.volume-slider {
+  --bar-height: 3px;
+  --knob-size: 12px;
+  --bar-background: #535353;
+  --bar-background-active: var(--ion-text-color);
+  --knob-background: var(--ion-text-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para la página de autenticación */
+.auth-content {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.auth-content form {
+  background-color: #282828;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.auth-content h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--ion-text-color);
+}
+
+.auth-separator {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.auth-separator::before,
+.auth-separator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #3e3e3e;
+}
+
+.auth-separator::before {
+  left: 0;
+}
+
+.auth-separator::after {
+  right: 0;
+}
+
+.auth-separator span {
+  background-color: #121212;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  color: var(--ion-text-color);
+}
+
+/* Home page styles */
+.home-card {
+  margin: 0;
+}
+
+.home-card-image-container {
+  position: relative;
+}
+
+.home-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.home-favorite-button,
+.home-play-button {
+  position: absolute;
+  margin: 0;
+  --padding-start: 5px;
+  --padding-end: 5px;
+}
+
+.home-favorite-button {
+  top: 5px;
+  right: 5px;
+}
+
+.home-play-button {
+  bottom: 5px;
+  right: 5px;
+}
+
+.home-favorite-icon,
+.home-play-icon {
+  font-size: 24px;
+  filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+}
+
+.home-favorite-button::part(native),
+.home-play-button::part(native) {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 16px;
+  color: var(--ion-text-color);
+}
+
+/* Estilos para la página de Libreria */
+.library-card {
+  margin: 0;
+}
+
+.library-card-image-container {
+  position: relative;
+}
+
+.library-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.library-favorite-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin: 0;
+  --padding-start: 5px;
+  --padding-end: 5px;
+}
+
+.library-favorite-icon {
+  font-size: 24px;
+  filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+}
+
+.library-favorite-button::part(native) {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.library-section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 16px;
+  color: var(--ion-text-color);
+}
+
+/* Estilos para la barra de búsqueda */
+ion-searchbar {
+  --background: #1e1e1e;
+  --color: var(--ion-text-color);
+  --placeholder-color: var(--ion-text-color);
+  --icon-color: var(--ion-text-color);
+  --clear-button-color: var(--ion-text-color);
+}
+
+/* Estilos para la barra de navegación */
+ion-tab-bar {
+  --background: #282828;
+  --color: var(--ion-color-light);
+  position: var(--padding-bottom);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+ion-content {
+  --padding-bottom: calc(56px + 130px);
+}
+
+ion-content::part(scroll) {
+  padding-bottom: calc(56px + 130px);
+}
+
+ion-page {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-content {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+/* Estilo Responsivo */
+@media (min-width: 768px) {
+  .music-player-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .song-info {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .player-controls {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .progress-volume {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+
+  .progress-bar-container {
+    flex-grow: 1;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .volume-control {
+    width: 120px;
+  }
+}
+
+@media (max-width: 767px) {
+  .music-player {
+    height: auto;
+  }
+
+  .music-player-content {
+    flex-wrap: wrap;
+  }
+
+  .song-info {
+    flex: 0 0 100%;
+    margin-bottom: 8px;
+  }
+
+  .player-controls {
+    flex: 0 0 100%;
+    order: 3;
+    margin-top: 8px;
+  }
+
+  .progress-volume {
+    flex: 0 0 100%;
+    max-width: none;
+    order: 2;
+  }
+
+  .volume-control {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  ion-grid {
+    padding: 0;
+  }
+
+  ion-col {
+    padding: 5px;
+  }
+
+  .home-card ion-card-header,
+  .library-card ion-card-header {
+    padding: 10px;
+  }
+
+  .home-card ion-card-title,
+  .library-card ion-card-title {
+    font-size: 0.9rem;
+  }
+
+  .home-card ion-card-subtitle,
+  .library-card ion-card-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .home-section-title,
+  .library-section-title {
+    font-size: 1rem;
+    padding-left: 10px;
+  }
+
+  ion-searchbar {
+    padding: 0 10px;
+  }
+
+  ion-content {
+    --padding-bottom: calc(56px + 180px);
+  }
+
+  ion-content::part(scroll) {
+    padding-bottom: calc(56px + 250px);
+  }
+}
