@@ -34,7 +34,7 @@ Nuestra propuesta es una aplicación web/móvil responsiva.
 
 La base de datos que he seleccionado es relacional, el motor de la base de datos a usar es PostgreSQL 
 
-[Modelo de la BD](EP2/DB.png)
+[Modelo de la BD](DB.png)
 
 # Justificación
 
