@@ -17,6 +17,7 @@ Las interfaces (UI) que he implementado de acuerdo al diseño de las __UI Figma_
 7. __Agregar o eliminar canción de favoritos__ (Funcionalidad implementada)
 
 Adicional 
+
 8. Inicio de sesión completamente implementado
 9. Registro completamente implementado
 
