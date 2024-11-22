@@ -16,6 +16,7 @@ import AlbumDetails from './pages/AlbumDetails';
 import { AuthProvider } from './contexts/AuthContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
 import { PlayerProvider } from './contexts/PlayerContext';
+import PrivateRoute from './components/PrivateRoute';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -48,9 +49,9 @@ const App: React.FC = () => (
               <IonRouterOutlet>
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/search" component={Search} />
-                <Route exact path="/library" component={Library} />
-                <Route exact path="/create-playlist" component={CreatePlaylist} />
-                <Route exact path="/playlist/:id" component={PlaylistDetails} />
+                <PrivateRoute exact path="/library" component={Library} />
+                <PrivateRoute exact path="/create-playlist" component={CreatePlaylist} />
+                <PrivateRoute exact path="/playlist/:id" component={PlaylistDetails} />
                 <Route exact path="/auth" component={Auth} />
                 <Route exact path="/song/:id" component={SongDetails} />
                 <Route exact path="/artist/:id" component={ArtistDetails} />

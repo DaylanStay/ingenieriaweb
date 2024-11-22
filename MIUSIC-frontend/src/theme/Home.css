@@ -1,0 +1,111 @@
+/* Estilos de la Página Principal */
+.home-card {
+    margin: 0;
+  }
+  
+  .home-card-image-container {
+    position: relative;
+  }
+  
+  .home-card-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .home-favorite-button,
+  .home-play-button {
+    position: absolute;
+    margin: 0;
+    --padding-start: 5px;
+    --padding-end: 5px;
+  }
+  
+  .home-favorite-button {
+    top: 5px;
+    right: 5px;
+  }
+  
+  .home-play-button {
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  .home-favorite-icon,
+  .home-play-icon {
+    font-size: 24px;
+    filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+  }
+  
+  .home-favorite-button::part(native),
+  .home-play-button::part(native) {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    color: var(--ion-text-color);
+  }
+
+  @media (max-width: 576px) {
+    ion-segment-button {
+      min-width: auto;
+      --padding-start: 10px;
+      --padding-end: 10px;
+    }
+  
+    ion-segment-button ion-label {
+      font-size: 12px;
+    }
+  
+    ion-grid {
+      padding: 0;
+    }
+  
+    ion-col {
+      padding: 5px;
+    }
+  
+    .home-card ion-card-header,
+    .library-card ion-card-header {
+      padding: 10px;
+    }
+  
+    .home-card ion-card-title,
+    .library-card ion-card-title {
+      font-size: 0.9rem;
+    }
+  
+    .home-card ion-card-subtitle,
+    .library-card ion-card-subtitle {
+      font-size: 0.8rem;
+    }
+  
+    .home-section-title,
+    .library-section-title {
+      font-size: 1rem;
+      padding-left: 10px;
+    }
+  
+    ion-searchbar {
+      padding: 0 10px;
+    }
+  
+    ion-content {
+      --padding-bottom: calc(56px + 180px);
+    }
+  
+    ion-content::part(scroll) {
+      padding-bottom: calc(56px + 250px);
+    }
+  }

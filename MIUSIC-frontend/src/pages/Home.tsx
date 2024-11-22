@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSearchbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSearchbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonIcon } from '@ionic/react';
 import { heart, heartOutline, play } from 'ionicons/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { usePlayer } from '../contexts/PlayerContext';
 import { useHistory } from 'react-router-dom';
+import Carousel from '../components/Carousel';
+import '../theme/Home.css'
 
 interface Song {
   id: number;
@@ -24,7 +26,7 @@ interface Artist {
 }
 
 const Home: React.FC = () => {
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
   const { addToFavorites, removeFromFavorites, isFavorite, fetchFavorites } = useFavorites();
   const { setCurrentSong, togglePlayPause } = usePlayer();
   const history = useHistory();
@@ -36,7 +38,7 @@ const Home: React.FC = () => {
       try {
         const response = await fetch('http://localhost:5000/api/recommended-songs');
         const data = await response.json();
-        setRecommendedSongs(data.map((song: Song) => ({ ...song, type: 'song' })));
+        setRecommendedSongs(data.map((song: Song) => ({ ...song, type: 'song' })).slice(0, 10));
       } catch (error) {
         console.error('Error al extraer canciones recomendadas: ', error);
       }
@@ -46,7 +48,7 @@ const Home: React.FC = () => {
       try {
         const response = await fetch('http://localhost:5000/api/recommended-artists');
         const data = await response.json();
-        setRecommendedArtists(data.map((artist: Artist) => ({ ...artist, type: 'artist' })));
+        setRecommendedArtists(data.map((artist: Artist) => ({ ...artist, type: 'artist' })).slice(0, 10));
       } catch (error) {
         console.error('Error al extraer artistas recomendados: ', error);
       }
@@ -115,68 +117,64 @@ const Home: React.FC = () => {
   };
 
   const renderSong = (song: Song) => (
-    <IonCol size="6" size-md="3" key={song.id}>
-      <IonCard className="home-card" onClick={() => handleItemClick(song)}>
-        <div className="home-card-image-container">
-          <img src={song.coverUrl} alt={song.title} className="home-card-image" />
-          {isLoggedIn && (
-            <IonButton 
-              fill="clear" 
-              onClick={(e) => handleFavoriteClick(e, song)}
-              className="home-favorite-button"
-            >
-              <IonIcon 
-                icon={isFavorite(song.id, song.type) ? heart : heartOutline} 
-                color="danger" 
-                className="home-favorite-icon"
-              />
-            </IonButton>
-          )}
-          <IonButton
-            fill="clear"
-            onClick={(e) => handlePlayClick(e, song)}
-            className="home-play-button"
+    <IonCard className="home-card" onClick={() => handleItemClick(song)}>
+      <div className="home-card-image-container">
+        <img src={song.coverUrl} alt={song.title} className="home-card-image" />
+        {isLoggedIn && (
+          <IonButton 
+            fill="clear" 
+            onClick={(e) => handleFavoriteClick(e, song)}
+            className="home-favorite-button"
           >
-            <IonIcon
-              icon={play}
-              color="primary"
-              className="home-play-icon"
+            <IonIcon 
+              icon={isFavorite(song.id, song.type) ? heart : heartOutline} 
+              color="danger" 
+              className="home-favorite-icon"
             />
           </IonButton>
-        </div>
-        <IonCardHeader>
-          <IonCardTitle>{song.title}</IonCardTitle>
-          <IonCardSubtitle>{song.artist}</IonCardSubtitle>
-        </IonCardHeader>
-      </IonCard>
-    </IonCol>
+        )}
+        <IonButton
+          fill="clear"
+          onClick={(e) => handlePlayClick(e, song)}
+          className="home-play-button"
+        >
+          <IonIcon
+            icon={play}
+            color="primary"
+            className="home-play-icon"
+          />
+        </IonButton>
+      </div>
+      <IonCardHeader>
+        <IonCardTitle>{song.title}</IonCardTitle>
+        <IonCardSubtitle>{song.artist}</IonCardSubtitle>
+      </IonCardHeader>
+    </IonCard>
   );
 
   const renderArtist = (artist: Artist) => (
-    <IonCol size="6" size-md="3" key={artist.id}>
-      <IonCard className="home-card" onClick={() => handleItemClick(artist)}>
-        <div className="home-card-image-container">
-          <img src={artist.imageUrl} alt={artist.name} className="home-card-image" />
-          {isLoggedIn && (
-            <IonButton 
-              fill="clear" 
-              onClick={(e) => handleFavoriteClick(e, artist)}
-              className="home-favorite-button"
-            >
-              <IonIcon 
-                icon={isFavorite(artist.id, artist.type) ? heart : heartOutline} 
-                color="danger" 
-                className="home-favorite-icon"
-              />
-            </IonButton>
-          )}
-        </div>
-        <IonCardHeader>
-          <IonCardTitle>{artist.name}</IonCardTitle>
-          <IonCardSubtitle>{artist.description}</IonCardSubtitle>
-        </IonCardHeader>
-      </IonCard>
-    </IonCol>
+    <IonCard className="home-card" onClick={() => handleItemClick(artist)}>
+      <div className="home-card-image-container">
+        <img src={artist.imageUrl} alt={artist.name} className="home-card-image" />
+        {isLoggedIn && (
+          <IonButton 
+            fill="clear" 
+            onClick={(e) => handleFavoriteClick(e, artist)}
+            className="home-favorite-button"
+          >
+            <IonIcon 
+              icon={isFavorite(artist.id, artist.type) ? heart : heartOutline} 
+              color="danger" 
+              className="home-favorite-icon"
+            />
+          </IonButton>
+        )}
+      </div>
+      <IonCardHeader>
+        <IonCardTitle>{artist.name}</IonCardTitle>
+        <IonCardSubtitle>{artist.description}</IonCardSubtitle>
+      </IonCardHeader>
+    </IonCard>
   );
 
   return (
@@ -198,24 +196,13 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <IonGrid>
-          <IonRow>
-            <IonCol>
-              <h2 className="home-section-title">Canciones Recomendadas</h2>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            {recommendedSongs.map(renderSong)}
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <h2 className="home-section-title">Artistas Recomendados</h2>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            {recommendedArtists.map(renderArtist)}
-          </IonRow>
-        </IonGrid>
+        <div className="ion-padding">
+          <h2 className="home-section-title">Canciones Recomendadas</h2>
+          <Carousel items={recommendedSongs} renderItem={renderSong} />
+
+          <h2 className="home-section-title">Artistas Recomendados</h2>
+          <Carousel items={recommendedArtists} renderItem={renderArtist} />
+        </div>
       </IonContent>
     </IonPage>
   );

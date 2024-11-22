@@ -3,6 +3,8 @@ import { IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonButton, IonInp
 import { logoGoogle, logoFacebook } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useLocation } from 'react-router-dom';
+import '../theme/Auth.css'
 
 const Auth: React.FC = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -18,6 +20,14 @@ const Auth: React.FC = () => {
   const [toastMessage, setToastMessage] = useState('');
   const history = useHistory();
   const { login, register } = useAuth();
+  const location = useLocation<{ from: string }>();
+  const [redirectMessage, setRedirectMessage] = useState('');
+
+  useEffect(() => {
+    if (location.state && location.state.from) {
+      setRedirectMessage('Por favor, inicia sesión para acceder a esta página.');
+    }
+  }, [location]);
 
   const regiones = ['Arica y Parinacota', 'Tarapacá', 'Antofagasta', 'Atacama', 'Coquimbo', 'Valparaíso', 'Metropolitana de Santiago', "O'Higgins", 'Maule', 'Ñuble', 'Biobío', 'La Araucanía', 'Los Ríos', 'Los Lagos', 'Aysén', 'Magallanes'];
   const [comunas, setComunas] = useState<string[]>([]);

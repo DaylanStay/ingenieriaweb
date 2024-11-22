@@ -147,9 +147,10 @@ app.get('/api/songs/:id', async (req, res) => {
   try {
     const id = parseIntSafe(req.params.id);
     const result = await pool.query(`
-      SELECT c.id, c.title, c."coverUrl", c."audioUrl", c."album_id", c.year, c.genre, c.duration, a.name as artist
+      SELECT c.id, c.title, c."coverUrl", c."audioUrl", al.title as album, c.year, c.genre, c.duration, a.name as artist
       FROM canciones c
       JOIN artistas a ON c.artist_id = a.id
+      LEFT JOIN albumes al ON c.album_id = al.id
       WHERE c.id = $1
     `, [id]);
 

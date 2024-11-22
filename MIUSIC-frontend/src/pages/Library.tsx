@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButton, IonIcon } from '@ionic/react';
 import { heart, heartOutline, trash, play } from 'ionicons/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { usePlayer } from '../contexts/PlayerContext';
 import { useHistory } from 'react-router-dom';
+import Carousel from '../components/Carousel';
 
 interface FavoriteItem {
   id: number;
@@ -114,80 +115,68 @@ const Library: React.FC = () => {
   };
 
   const renderItem = (item: FavoriteItem) => (
-    <IonCol size="6" size-md="3" key={item.id}>
-      <IonCard className="library-card" onClick={() => handleItemClick(item)}>
-        <div className="library-card-image-container">
-          <img src={item.coverUrl || item.imageUrl} alt={item.title} className="library-card-image" />
-          <IonButton 
-            fill="clear" 
-            className="library-favorite-button"
-            onClick={(e) => handleFavoriteClick(e, item)}
+    <IonCard className="library-card" onClick={() => handleItemClick(item)}>
+      <div className="library-card-image-container">
+        <img src={item.coverUrl || item.imageUrl} alt={item.title} className="library-card-image" />
+        <IonButton 
+          fill="clear" 
+          className="library-favorite-button"
+          onClick={(e) => handleFavoriteClick(e, item)}
+        >
+          <IonIcon 
+            icon={isFavorite(item.id, item.type) ? heart : heartOutline} 
+            color="danger" 
+            className="library-favorite-icon"
+          />
+        </IonButton>
+        {item.type === 'song' && (
+          <IonButton
+            fill="clear"
+            onClick={(e) => handlePlayClick(e, item)}
+            className="library-play-button"
           >
-            <IonIcon 
-              icon={isFavorite(item.id, item.type) ? heart : heartOutline} 
-              color="danger" 
-              className="library-favorite-icon"
+            <IonIcon
+              icon={play}
+              color="primary"
+              className="library-play-icon"
             />
           </IonButton>
-          {item.type === 'song' && (
-            <IonButton
-              fill="clear"
-              onClick={(e) => handlePlayClick(e, item)}
-              className="library-play-button"
-            >
-              <IonIcon
-                icon={play}
-                color="primary"
-                className="library-play-icon"
-              />
-            </IonButton>
-          )}
-        </div>
-        <IonCardHeader>
-          <IonCardTitle>{item.title}</IonCardTitle>
-          {item.artist && <IonCardSubtitle>{item.artist}</IonCardSubtitle>}
-        </IonCardHeader>
-      </IonCard>
-    </IonCol>
+        )}
+      </div>
+      <IonCardHeader>
+        <IonCardTitle>{item.title}</IonCardTitle>
+        {item.artist && <IonCardSubtitle>{item.artist}</IonCardSubtitle>}
+      </IonCardHeader>
+    </IonCard>
   );
 
   const renderPlaylist = (playlist: Playlist) => (
-    <IonCol size="6" size-md="3" key={playlist.id}>
-      <IonCard className="library-card" onClick={() => handlePlaylistClick(playlist.id)}>
-        <IonCardHeader>
-          <IonCardTitle>{playlist.name}</IonCardTitle>
-          <IonCardSubtitle>{playlist.description}</IonCardSubtitle>
-        </IonCardHeader>
-        <IonButton 
-          fill="clear" 
-          className="library-delete-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleDeletePlaylist(playlist.id);
-          }}
-        >
-          <IonIcon icon={trash} color="danger" />
-        </IonButton>
-      </IonCard>
-    </IonCol>
+    <IonCard className="library-card" onClick={() => handlePlaylistClick(playlist.id)}>
+      <IonCardHeader>
+        <IonCardTitle>{playlist.name}</IonCardTitle>
+        <IonCardSubtitle>{playlist.description}</IonCardSubtitle>
+      </IonCardHeader>
+      <IonButton 
+        fill="clear" 
+        className="library-delete-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDeletePlaylist(playlist.id);
+        }}
+      >
+        <IonIcon icon={trash} color="danger" />
+      </IonButton>
+    </IonCard>
   );
 
   const renderSection = (title: string, items: FavoriteItem[], type: string) => (
     <>
-      <IonRow>
-        <IonCol>
-          <h2 className="library-section-title">{title}</h2>
-        </IonCol>
-      </IonRow>
-      <IonRow>
-        {items.length === 0 ? (
-          <IonCol>
-            <p>Aún no tienes {type} favoritos.</p>
-          </IonCol>
-        ) : (
-          items.map(renderItem)
-        )}
-      </IonRow>
+      <h2 className="library-section-title">{title}</h2>
+      {items.length === 0 ? (
+        <p>Aún no tienes {type} favoritos.</p>
+      ) : (
+        <Carousel items={items} renderItem={renderItem} />
+      )}
     </>
   );
 
@@ -216,25 +205,18 @@ const Library: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonGrid>
+        <div className="ion-padding">
           {renderSection('Tus Canciones Favoritas', favorites.songs, 'canciones')}
           {renderSection('Tus Artistas Favoritos', favorites.artists, 'artistas')}
           {renderSection('Tus Álbumes Favoritos', favorites.albums, 'álbumes')}
-          <IonRow>
-            <IonCol>
-              <h2 className="library-section-title">Tus Playlists</h2>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            {playlists.length === 0 ? (
-              <IonCol>
-                <p>Aún no tienes playlists.</p>
-              </IonCol>
-            ) : (
-              playlists.map(renderPlaylist)
-            )}
-          </IonRow>
-        </IonGrid>
+          
+          <h2 className="library-section-title">Tus Playlists</h2>
+          {playlists.length === 0 ? (
+            <p>Aún no tienes playlists.</p>
+          ) : (
+            <Carousel items={playlists} renderItem={renderPlaylist} />
+          )}
+        </div>
       </IonContent>
     </IonPage>
   );
