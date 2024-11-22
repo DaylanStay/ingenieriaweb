@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { IonRange, IonIcon, IonButton, IonImg } from '@ionic/react';
 import { playCircle, pauseCircle, playSkipBack, playSkipForward, volumeHigh, volumeLow } from 'ionicons/icons';
 import { usePlayer } from '../contexts/PlayerContext';
-import '../theme/MusicPlayer.css'
 
 const MusicPlayer: React.FC = () => {
   const [volume, setVolume] = useState(50);

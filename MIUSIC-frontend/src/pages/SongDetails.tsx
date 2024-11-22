@@ -71,24 +71,6 @@ const SongDetails: React.FC = () => {
     }
   }, [song, setCurrentSong]);
 
-  if (loading) {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonBackButton defaultHref="/home" icon={arrowBack} text="" />
-            </IonButtons>
-            <IonTitle>Cargando...</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-          <p>Cargando detalles de la canción...</p>
-        </IonContent>
-      </IonPage>
-    );
-  }
-
   if (!song) {
     return (
       <IonPage>
@@ -127,16 +109,16 @@ const SongDetails: React.FC = () => {
           <IonCardContent>
             <IonList>
               <IonItem>
-                <IonLabel>Álbum: {song.album || 'No disponible'}</IonLabel>
+                <IonLabel>Álbum: {song.album}</IonLabel>
               </IonItem>
               <IonItem>
-                <IonLabel>Año: {song.year || 'No disponible'}</IonLabel>
+                <IonLabel>Año: {song.year}</IonLabel>
               </IonItem>
               <IonItem>
-                <IonLabel>Género: {song.genre || 'No disponible'}</IonLabel>
+                <IonLabel>Género: {song.genre}</IonLabel>
               </IonItem>
               <IonItem>
-                <IonLabel>Duración: {song.duration || 'No disponible'}</IonLabel>
+                <IonLabel>Duración: {song.duration}</IonLabel>
               </IonItem>
             </IonList>
           </IonCardContent>

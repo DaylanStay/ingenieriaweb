@@ -6,7 +6,6 @@ import { useFavorites } from '../contexts/FavoritesContext';
 import { usePlayer } from '../contexts/PlayerContext';
 import { useHistory } from 'react-router-dom';
 import Carousel from '../components/Carousel';
-import '../theme/Home.css'
 
 interface Song {
   id: number;
