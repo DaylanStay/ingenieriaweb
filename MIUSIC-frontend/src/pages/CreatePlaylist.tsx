@@ -22,7 +22,7 @@ export default function Component() {
   const [selectedSongs, setSelectedSongs] = useState<Song[]>([]);
   const { favorites, fetchFavorites } = useFavorites();
   const [filteredFavorites, setFilteredFavorites] = useState<Song[]>([]);
-  const { user } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const history = useHistory();
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -82,6 +82,23 @@ export default function Component() {
   const removeSongFromPlaylist = (songId: number) => {
     setSelectedSongs(selectedSongs.filter(song => song.id !== songId));
   };
+
+  if (!isLoggedIn) {
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Crear Playlist</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen>
+          <div className="ion-padding">
+            <h2>Inicia sesión para crear una playlist</h2>
+          </div>
+        </IonContent>
+      </IonPage>
+    );
+  }
 
   return (
     <IonPage>
